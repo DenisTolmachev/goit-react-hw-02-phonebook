@@ -22,15 +22,15 @@ export class App extends Component {
   };
 
   formSubmitHandler = data => {
-    console.log(data);
-    const contact = {
+    const addContact = {
       id: shortid.generate(),
       name: data.name,
       number: data.number,
     };
-    this.setState(({ contacts }) => ({
-      contacts: [contact, ...contacts],
-    }));
+
+    this.setState(({ contacts }) => (contacts.find(contact => contact.name === addContact.name) ?
+    alert(`${addContact.name} is already in contacts`) :
+    {contacts: [addContact, ...contacts]}));
   };
 
   changeFilter = e => {
