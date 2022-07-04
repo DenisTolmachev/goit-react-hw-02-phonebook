@@ -14,6 +14,12 @@ export class App extends Component {
     filter: '',
   };
 
+  deleteContact = id => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== id),
+    }));
+  };
+
   formSubmitHandler = data => {
     console.log(data);
     const contact = {
@@ -33,7 +39,7 @@ export class App extends Component {
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.formSubmitHandler} />
         <h2>Contacts</h2>
-        <ContactList contacts={contacts} />
+        <ContactList contacts={contacts} onDeleteContact={this.deleteContact} />
       </>
     );
   }
