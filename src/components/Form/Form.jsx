@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import shortid from 'shortid';
 import { Form, Label, Input, AddBtn } from './Form.styled';
 
-
 export class ContactForm extends Component {
   state = {
     name: '',
