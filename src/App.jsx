@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { ContactForm } from 'components/Form/Form';
 import shortid from 'shortid';
 import { ContactList } from 'components/ContactList/ContactList';
+import { Filter } from 'components/Filter/Filter';
 
 export class App extends Component {
   state = {
@@ -32,14 +33,32 @@ export class App extends Component {
     }));
   };
 
+  changeFilter = e => {
+    this.setState({ filter: e.currentTarget.value });
+    console.log(this.state.filter);
+  };
+
+  getVisibleContacts = () => {
+    const { contacts, filter } = this.state;
+    const normalizedContacts = filter.toLowerCase();
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedContacts))
+  };
+
   render() {
-    const { contacts } = this.state;
+    const { filter } = this.state;
+    const filteredContacts = this.getVisibleContacts();
+
     return (
       <>
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.formSubmitHandler} />
         <h2>Contacts</h2>
-        <ContactList contacts={contacts} onDeleteContact={this.deleteContact} />
+        <Filter value={filter} onChange={this.changeFilter} />
+        <ContactList
+          contacts={filteredContacts}
+          onDeleteContact={this.deleteContact}
+        />
       </>
     );
   }
