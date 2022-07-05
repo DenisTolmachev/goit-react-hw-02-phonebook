@@ -7,12 +7,16 @@ padding: 0;
 
 export const ContactListItem = styled.li`
 display: flex;
+justify-content: space-between;
+align-items: center;
 margin: 10px;
 `;
 
 export const ContactsListText = styled.p`
 margin: 0;
 width: 300px;
+font-size: ${props => props.theme.fontSizes.ml};
+text-transform: capitalize;
 `;
 
 export const ContactsListButton = styled.button`

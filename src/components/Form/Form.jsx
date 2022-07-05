@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import shortid from 'shortid';
 // import { Formik } from 'formik';
 // import * as yup from 'yup';
-import { Form, Label, Input, AddBtn } from './Form.styled';
+import { Form} from './Form.styled';
+import { Button, Input, Label } from '../common/common.style';
 
 // const mySchema = yup.object().shape({
 //   name: yup.string().min(2).required('Name is required'),
@@ -44,7 +45,7 @@ export class ContactForm extends Component {
       // >
       // {props => ()};
         <Form onSubmit={this.handleSubmit}>
-          <Label htmlFor={this.nameInput}>Name</Label>
+          <Label htmlFor={this.nameInput}>Name
           <Input
             type="text"
             name="name"
@@ -56,19 +57,21 @@ export class ContactForm extends Component {
             value={this.state.name}
             onChange={this.handleChange}
           />
-          <Label htmlFor={this.numberInput}>Number</Label>
+          </Label>
+          <Label htmlFor={this.numberInput}>Number
           <Input
             type="tel"
             name="number"
             pattern="\d{3}[\-]\d{2}[\-]\d{2}"
-            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            title="The phone number must consist of digits and a dash."
             placeholder="000-00-00"
             required
             id={this.numberInput}
             value={this.state.number}
             onChange={this.handleChange}
           />
-          <AddBtn type="submit">Add contact</AddBtn>
+          </Label>
+          <Button type="submit">Add contact</Button>
         </Form>
       //</Formik>
     );

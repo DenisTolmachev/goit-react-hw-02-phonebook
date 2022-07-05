@@ -3,6 +3,7 @@ import { ContactForm } from 'components/Form/Form';
 import shortid from 'shortid';
 import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
+import { Main } from 'App.styled';
 
 export class App extends Component {
   state = {
@@ -50,7 +51,7 @@ export class App extends Component {
     const filteredContacts = this.getVisibleContacts();
 
     return (
-      <>
+      <Main>
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.formSubmitHandler} />
         <h2>Contacts</h2>
@@ -59,7 +60,7 @@ export class App extends Component {
           contacts={filteredContacts}
           onDeleteContact={this.deleteContact}
         />
-      </>
+      </Main>
     );
   }
 }
