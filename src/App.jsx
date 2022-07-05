@@ -3,7 +3,7 @@ import { ContactForm } from 'components/Form/Form';
 import shortid from 'shortid';
 import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
-import { Main } from 'App.styled';
+import { Main, Notification } from 'App.styled';
 
 export class App extends Component {
   state = {
@@ -29,9 +29,11 @@ export class App extends Component {
       number: data.number,
     };
 
-    this.setState(({ contacts }) => (contacts.find(contact => contact.name === addContact.name) ?
-    alert(`${addContact.name} is already in contacts`) :
-    {contacts: [addContact, ...contacts]}));
+    this.setState(({ contacts }) =>
+      contacts.find(contact => contact.name === addContact.name)
+        ? alert(`${addContact.name} is already in contacts`)
+        : { contacts: [addContact, ...contacts] }
+    );
   };
 
   changeFilter = e => {
@@ -43,23 +45,25 @@ export class App extends Component {
     const { contacts, filter } = this.state;
     const normalizedContacts = filter.toLowerCase();
     return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normalizedContacts))
+      contact.name.toLowerCase().includes(normalizedContacts)
+    );
   };
 
   render() {
-    const { filter } = this.state;
+    const { filter, contacts } = this.state;
     const filteredContacts = this.getVisibleContacts();
-
+    console.log(contacts.length);
     return (
       <Main>
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.formSubmitHandler} />
         <h2>Contacts</h2>
         <Filter value={filter} onChange={this.changeFilter} />
-        <ContactList
+        {contacts.length > 0 ? (<ContactList
           contacts={filteredContacts}
           onDeleteContact={this.deleteContact}
-        />
+        />):(<Notification>There are no contacts in the phone book.</Notification>)}
+        
       </Main>
     );
   }
