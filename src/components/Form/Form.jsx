@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import shortid from 'shortid';
-//import { Formik } from 'formik';
+// import { Formik } from 'formik';
+// import * as yup from 'yup';
 import { Form, Label, Input, AddBtn } from './Form.styled';
+
+// const mySchema = yup.object().shape({
+//   name: yup.string().min(2).required('Name is required'),
+//   number: yup.string().length(9).required('Number is required'),
+// });
 
 export class ContactForm extends Component {
   state = {
@@ -31,7 +37,12 @@ export class ContactForm extends Component {
 
   render() {
     return (
-      //<Formik>
+      // <Formik
+      //   initialValues={this.state}
+      //   validationSchema={mySchema}
+      //   onSubmit={this.hadleSubmit}
+      // >
+      // {props => ()};
         <Form onSubmit={this.handleSubmit}>
           <Label htmlFor={this.nameInput}>Name</Label>
           <Input
@@ -49,9 +60,9 @@ export class ContactForm extends Component {
           <Input
             type="tel"
             name="number"
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            pattern="\d{3}[\-]\d{2}[\-]\d{2}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            placeholder="XXX-XX-XX"
+            placeholder="000-00-00"
             required
             id={this.numberInput}
             value={this.state.number}
