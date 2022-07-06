@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import shortid from 'shortid';
+//import NumberFormat from 'react-number-format';
 // import { Formik } from 'formik';
 // import * as yup from 'yup';
 import { Form } from './Form.styled';
-import { Button, Input, Label } from 'utils';
+import { Button, Input,InputNumber, Label } from 'utils';
 
 // const mySchema = yup.object().shape({
 //   name: yup.string().min(2).required('Name is required'),
@@ -72,15 +73,16 @@ export class ContactForm extends Component {
         </Label>
         <Label htmlFor={this.numberInput}>
           Number
-          <Input
+          <InputNumber
+            format="+38 (###) ###-##-##"
+            allowEmptyFormatting
+            mask="_"
             type="tel"
             name="number"
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            placeholder="000-00-00"
+            placeholder="+38 (000) 000-00-00"
             required
             id={this.numberInput}
-            // value={this.state.number}
+            value=""
             // onChange={this.handleChange}
           />
         </Label>
