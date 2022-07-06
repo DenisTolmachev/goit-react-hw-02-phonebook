@@ -79,7 +79,6 @@ export class ContactForm extends Component {
             mask="_"
             type="tel"
             name="number"
-            placeholder="+38 (000) 000-00-00"
             required
             id={this.numberInput}
             value=""
