@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import shortid from 'shortid';
 // import { Formik } from 'formik';
 // import * as yup from 'yup';
-import { Form} from './Form.styled';
-import { Button, Input, Label } from '../common/common.style';
+import { Form } from './Form.styled';
+import { Button, Input, Label } from 'utils';
 
 // const mySchema = yup.object().shape({
 //   name: yup.string().min(2).required('Name is required'),
@@ -44,8 +44,9 @@ export class ContactForm extends Component {
       //   onSubmit={this.hadleSubmit}
       // >
       // {props => ()};
-        <Form onSubmit={this.handleSubmit}>
-          <Label htmlFor={this.nameInput}>Name
+      <Form onSubmit={this.handleSubmit}>
+        <Label htmlFor={this.nameInput}>
+          Name
           <Input
             type="text"
             name="name"
@@ -57,22 +58,23 @@ export class ContactForm extends Component {
             value={this.state.name}
             onChange={this.handleChange}
           />
-          </Label>
-          <Label htmlFor={this.numberInput}>Number
+        </Label>
+        <Label htmlFor={this.numberInput}>
+          Number
           <Input
             type="tel"
             name="number"
-            pattern="\d{3}[\-]\d{2}[\-]\d{2}"
-            title="The phone number must consist of digits and a dash."
+            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             placeholder="000-00-00"
             required
             id={this.numberInput}
             value={this.state.number}
             onChange={this.handleChange}
           />
-          </Label>
-          <Button type="submit">Add contact</Button>
-        </Form>
+        </Label>
+        <Button type="submit">Add contact</Button>
+      </Form>
       //</Formik>
     );
   }

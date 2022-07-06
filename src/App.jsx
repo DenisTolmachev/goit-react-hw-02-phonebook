@@ -3,7 +3,8 @@ import { ContactForm } from 'components/Form/Form';
 import shortid from 'shortid';
 import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
-import { Main, Notification } from 'App.styled';
+import { Container } from 'App.styled';
+import { Notification } from 'utils';
 
 export class App extends Component {
   state = {
@@ -54,7 +55,7 @@ export class App extends Component {
     const filteredContacts = this.getVisibleContacts();
     console.log(contacts.length);
     return (
-      <Main>
+      <Container>
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.formSubmitHandler} />
         <h2>Contacts</h2>
@@ -64,7 +65,7 @@ export class App extends Component {
           onDeleteContact={this.deleteContact}
         />):(<Notification>There are no contacts in the phone book.</Notification>)}
         
-      </Main>
+      </Container>
     );
   }
 }
