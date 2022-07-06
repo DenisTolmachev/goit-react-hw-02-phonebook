@@ -14,7 +14,7 @@ margin: 10px;
 
 export const ContactsListText = styled.p`
 margin: 0;
-width: 300px;
+width: 100%;
 font-size: ${props => props.theme.fontSizes.ml};
 text-transform: capitalize;
 `;
