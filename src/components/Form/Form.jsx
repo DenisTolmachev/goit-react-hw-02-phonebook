@@ -11,30 +11,41 @@ import { Button, Input, Label } from 'utils';
 // });
 
 export class ContactForm extends Component {
-  state = {
-    name: '',
-    number: '',
-  };
+  // Контрольована форма
+  // state = {
+  //   name: '',
+  //   number: '',
+  // };
 
   nameInput = shortid.generate();
   numberInput = shortid.generate();
 
-  handleChange = e => {
-    const { name, value } = e.currentTarget;
-    this.setState({
-      [name]: value,
-    });
-  };
+  // handleChange = e => {
+  //   const { name, value } = e.currentTarget;
+  //   this.setState({
+  //     [name]: value,
+  //   });
+  // };
+
+  // handleSubmit = e => {
+  //   e.preventDefault();
+  //   this.props.onSubmit(this.state);
+  //   this.reset();
+  // };
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.onSubmit(this.state);
-    this.reset();
+    const form = e.currentTarget;
+    this.props.onSubmit({
+      name: form.elements.name.value,
+      number: form.elements.number.value,
+    });
+    form.reset();
   };
 
-  reset = () => {
-    this.setState({ name: '', number: '' });
-  };
+  // reset = () => {
+  //   this.setState({ name: '', number: '' });
+  // };
 
   render() {
     return (
@@ -55,8 +66,8 @@ export class ContactForm extends Component {
             placeholder="Rosie Simpson"
             required
             id={this.nameInput}
-            value={this.state.name}
-            onChange={this.handleChange}
+            // value={this.state.name}
+            // onChange={this.handleChange}
           />
         </Label>
         <Label htmlFor={this.numberInput}>
@@ -69,8 +80,8 @@ export class ContactForm extends Component {
             placeholder="000-00-00"
             required
             id={this.numberInput}
-            value={this.state.number}
-            onChange={this.handleChange}
+            // value={this.state.number}
+            // onChange={this.handleChange}
           />
         </Label>
         <Button type="submit">Add contact</Button>
