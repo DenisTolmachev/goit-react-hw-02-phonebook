@@ -1,5 +1,5 @@
 import { FilterLabelTitle} from './Filter.styled';
-import {Input, Label} from 'utils';
+import {Input, Label} from 'components/commons';
 
 export const Filter = ({ value, onChange }) => {
   return (

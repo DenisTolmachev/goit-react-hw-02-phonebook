@@ -4,7 +4,7 @@ import shortid from 'shortid';
 // import { Formik } from 'formik';
 // import * as yup from 'yup';
 import { Form } from './Form.styled';
-import { Button, Input,InputNumber, Label } from 'utils';
+import { Button, Input,InputNumber, Label } from 'components/commons';
 
 // const mySchema = yup.object().shape({
 //   name: yup.string().min(2).required('Name is required'),

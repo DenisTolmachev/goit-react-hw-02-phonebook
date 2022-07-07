@@ -4,7 +4,7 @@ import shortid from 'shortid';
 import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
 import { Container } from 'App.styled';
-import { Notification } from 'utils';
+import { Notification } from 'components/commons';
 
 export class App extends Component {
   state = {
